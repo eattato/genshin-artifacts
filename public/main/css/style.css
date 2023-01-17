@@ -19,9 +19,26 @@ body {
 
 .characters {
   display: flex;
-  flex-wrap: wrap;
+  flex-direction: column;
   width: 600px;
   height: 100%;
+  margin-left: 50px;
+}
+
+.characters_title {
+  font-size: 24px;
+  color: white;
+  margin-top: 50px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+
+.characters_list {
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
+  height: auto;
   padding-top: 100px;
   margin-left: 50px;
 }

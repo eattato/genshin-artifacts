@@ -1,5 +1,7 @@
+let serverUrl = "http://localhost:8888/";
+
 $().ready(() => {
-  let characters = $(".characters");
+  let characters = $(".character_list");
 
   const addCharacterCard = (name, face, element, star) => {
     let card =
@@ -19,6 +21,20 @@ $().ready(() => {
 
     card.appendTo(characters);
   };
+
+  // 카드 데이터 불러오기
+  fetch(serverUrl + "data/card", {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  })
+    .then((res) => res.json())
+    .then((res) => {
+      for (let ind in res) {
+        let data = res[ind];
+        addCharacterCard(data.name, data.face, data.element, data.star);
+      }
+    });
 
   addCharacterCard(
     "닐?루",

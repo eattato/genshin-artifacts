@@ -1,250 +1,374 @@
 {
   "aether": {
     "face": "aether.webp",
-    "name": "아이테르"
+    "name": "아이테르",
+    "element": "",
+    "star": 5
   },
   "albedo": {
     "face": "albedo.webp",
-    "name": "알베도"
+    "name": "알베도",
+    "element": "geo",
+    "star": 5
   },
   "aloy": {
     "face": "aloy.webp",
-    "name": "에일로이"
+    "name": "에일로이",
+    "element": "cryo",
+    "star": 5
   },
   "amber": {
     "face": "amber.webp",
-    "name": "엠버"
+    "name": "엠버",
+    "element": "pyro",
+    "star": 4
   },
   "arataki_itto": {
     "face": "arataki_itto.webp",
-    "name": "아라타키 이토"
+    "name": "아라타키 이토",
+    "element": "geo",
+    "star": 5
   },
   "barbara": {
     "face": "barbara.png",
-    "name": "바바라"
+    "name": "바바라",
+    "element": "hydro",
+    "star": 4
   },
   "beidou": {
     "face": "beidou.png",
-    "name": "북두"
+    "name": "북두",
+    "element": "electro",
+    "star": 4
   },
   "bennett": {
     "face": "bennett.png",
-    "name": "베넷"
+    "name": "베넷",
+    "element": "pyro",
+    "star": 4
   },
   "candace": {
     "face": "candace.webp",
-    "name": "캔디스"
+    "name": "캔디스",
+    "element": "hydro",
+    "star": 4
   },
   "chongyun": {
     "face": "chongyun.webp",
-    "name": "중운"
+    "name": "중운",
+    "element": "cryo",
+    "star": 4
   },
   "collei": {
     "face": "collei.webp",
-    "name": "콜레이"
+    "name": "콜레이",
+    "element": "dendro",
+    "star": 4
   },
   "cyno": {
     "face": "cyno.webp",
-    "name": "사이노"
+    "name": "사이노",
+    "element": "electro",
+    "star": 5
   },
   "diluc": {
     "face": "diluc.png",
-    "name": "다이루크"
+    "name": "다이루크",
+    "element": "pyro",
+    "star": 5
   },
   "diona": {
     "face": "diona.webp",
-    "name": "디오나"
+    "name": "디오나",
+    "element": "cryo",
+    "star": 4
   },
   "dori": {
     "face": "dori.webp",
-    "name": "도리"
+    "name": "도리",
+    "element": "electro",
+    "star": 4
   },
   "eula": {
     "face": "eula.webp",
-    "name": "유라"
+    "name": "유라",
+    "element": "cryo",
+    "star": 5
   },
   "faruzan": {
     "face": "faruzan.png",
-    "name": "파루잔"
+    "name": "파루잔",
+    "element": "anemo",
+    "star": 4
   },
   "fischl": {
     "face": "fischl.png",
-    "name": "피슬"
+    "name": "피슬",
+    "element": "electro",
+    "star": 4
   },
   "ganyu": {
     "face": "ganyu.webp",
-    "name": "감우"
+    "name": "감우",
+    "element": "cryo",
+    "star": 5
   },
   "gorou": {
     "face": "gorou.webp",
-    "name": "고로"
+    "name": "고로",
+    "element": "geo",
+    "star": 4
   },
   "hu_tao": {
     "face": "hu_tao.webp",
-    "name": "호두"
+    "name": "호두",
+    "element": "pyro",
+    "star": 5
   },
   "jean": {
     "face": "jean.webp",
-    "name": "진"
+    "name": "진",
+    "element": "anemo",
+    "star": 5
   },
   "kaedehara_kazuha": {
     "face": "kaedehara_kazuha.webp",
-    "name": "카에데하라 카즈하"
+    "name": "카에데하라 카즈하",
+    "element": "anemo",
+    "star": 5
   },
   "kaeya": {
     "face": "kaeya.webp",
-    "name": "케이아"
+    "name": "케이아",
+    "element": "cryo",
+    "star": 4
   },
   "kamisato_ayaka": {
     "face": "kamisato_ayaka.webp",
-    "name": "카미사토 아야카"
+    "name": "카미사토 아야카",
+    "element": "cryo",
+    "star": 5
   },
   "kamisato_ayato": {
     "face": "kamisato_ayato.webp",
-    "name": "카미사토 아야토"
+    "name": "카미사토 아야토",
+    "element": "hydro",
+    "star": 5
   },
   "keqing": {
     "face": "keqing.png",
-    "name": "각청"
+    "name": "각청",
+    "element": "electro",
+    "star": 5
   },
   "klee": {
     "face": "klee.webp",
-    "name": "클레"
+    "name": "클레",
+    "element": "pyro",
+    "star": 5
   },
   "kujou_sara": {
     "face": "kujou_sara.webp",
-    "name": "쿠죠 사라"
+    "name": "쿠죠 사라",
+    "element": "electro",
+    "star": 4
   },
   "kuki_shinobu": {
     "face": "kuki_shinobu.webp",
-    "name": "쿠키 시노부"
+    "name": "쿠키 시노부",
+    "element": "electro",
+    "star": 4
   },
   "layla": {
     "face": "layla.webp",
-    "name": "레일라"
+    "name": "레일라",
+    "element": "cryo",
+    "star": 4
   },
   "lisa": {
     "face": "lisa.png",
-    "name": "리사"
+    "name": "리사",
+    "element": "electro",
+    "star": 4
   },
   "lumine": {
     "face": "lumine.png",
-    "name": "루미네"
+    "name": "루미네",
+    "element": "",
+    "star": 5
   },
   "mona": {
     "face": "mona.webp",
-    "name": "모나"
+    "name": "모나",
+    "element": "hydro",
+    "star": 5
   },
   "nahida": {
     "face": "nahida.webp",
-    "name": "나히다"
+    "name": "나히다",
+    "element": "dendro",
+    "star": 5
   },
   "nilou": {
     "face": "nilou.webp",
-    "name": "닐루"
+    "name": "닐루",
+    "element": "hydro",
+    "star": 5
   },
   "ningguang": {
     "face": "ningguang.webp",
-    "name": "응광"
+    "name": "응광",
+    "element": "geo",
+    "star": 4
   },
   "noelle": {
     "face": "noelle.png",
-    "name": "노엘"
+    "name": "노엘",
+    "element": "geo",
+    "star": 4
   },
   "qiqi": {
     "face": "qiqi.webp",
-    "name": "치치"
+    "name": "치치",
+    "element": "cryo",
+    "star": 4
   },
   "raiden_shogun": {
     "face": "raiden_shogun.webp",
-    "name": "라이덴 쇼군"
+    "name": "라이덴 쇼군",
+    "element": "electro",
+    "star": 5
   },
   "razor": {
     "face": "razor.png",
-    "name": "레이저"
+    "name": "레이저",
+    "element": "electro",
+    "star": 4
   },
   "rosaria": {
     "face": "rosaria.webp",
-    "name": "로자리아"
+    "name": "로자리아",
+    "element": "cryo",
+    "star": 4
   },
   "sangonomiya_kokomi": {
     "face": "sangonomiya_kokomi.webp",
-    "name": "산고노미야 코코미"
+    "name": "산고노미야 코코미",
+    "element": "hydro",
+    "star": 5
   },
   "sayu": {
     "face": "sayu.webp",
-    "name": "사유"
+    "name": "사유",
+    "element": "anemo",
+    "star": 4
   },
   "shenhe": {
     "face": "shenhe.webp",
-    "name": "신학"
+    "name": "신학",
+    "element": "cryo",
+    "star": 5
   },
   "shikanoin_heizou": {
     "face": "shikanoin_heizou.webp",
-    "name": "시카노인 헤이조"
+    "name": "시카노인 헤이조",
+    "element": "anemo",
+    "star": 4
   },
   "sucrose": {
     "face": "sucrose.webp",
-    "name": "설탕"
+    "name": "설탕",
+    "element": "anemo",
+    "star": 4
   },
   "tartaglia": {
     "face": "tartaglia.webp",
-    "name": "타르탈리아"
+    "name": "타르탈리아",
+    "element": "hydro",
+    "star": 5
   },
   "thoma": {
     "face": "thoma.webp",
-    "name": "토마"
+    "name": "토마",
+    "element": "pyro",
+    "star": 4
   },
   "tighnari": {
     "face": "tighnari.png",
-    "name": "타이나리"
+    "name": "타이나리",
+    "element": "dendro",
+    "star": 5
   },
   "venti": {
     "face": "venti.png",
-    "name": "벤티"
+    "name": "벤티",
+    "element": "anemo",
+    "star": 5
   },
   "wanderer": {
     "face": "wanderer.png",
-    "name": "방랑자"
+    "name": "방랑자",
+    "element": "anemo",
+    "star": 5
   },
   "xiangling": {
     "face": "xiangling.webp",
-    "name": "응광"
+    "name": "향릉",
+    "element": "pyro",
+    "star": 4
   },
   "xiao": {
     "face": "xiao.webp",
-    "name": "소"
+    "name": "소",
+    "element": "anemo",
+    "star": 5
   },
   "xingqu": {
     "face": "xingqu.png",
-    "name": "행추"
+    "name": "행추",
+    "element": "hydro",
+    "star": 4
   },
   "xinyan": {
     "face": "xinyan.png",
-    "name": "신염"
+    "name": "신염",
+    "element": "pyro",
+    "star": 4
   },
   "yae_miko": {
     "face": "yae_miko.webp",
-    "name": "야에 미코"
+    "name": "야에 미코",
+    "element": "electro",
+    "star": 5
   },
   "yanfei": {
     "face": "yanfei.webp",
-    "name": "연비"
+    "name": "연비",
+    "element": "pyro",
+    "star": 4
   },
   "yelan": {
     "face": "yelan.webp",
-    "name": "야란"
+    "name": "야란",
+    "element": "hydro",
+    "star": 5
   },
   "yoimiya": {
     "face": "yoimiya.webp",
-    "name": "요이미야"
+    "name": "요이미야",
+    "element": "pyro",
+    "star": 5
   },
   "yun_jin": {
     "face": "yun_jin.webp",
-    "name": "운근"
+    "name": "운근",
+    "element": "geo",
+    "star": 4
   },
   "zhongli": {
     "face": "zhongli.png",
-    "name": "종려"
+    "name": "종려",
+    "element": "geo",
+    "star": 5
   }
 }
