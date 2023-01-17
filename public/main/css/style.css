@@ -18,8 +18,9 @@ body {
 }
 
 .characters {
-  display: table;
-  width: 500px;
+  display: flex;
+  flex-wrap: wrap;
+  width: 600px;
   height: 100%;
   padding-top: 100px;
   margin-left: 50px;
@@ -31,6 +32,7 @@ body {
   flex-direction: column;
   width: 100px;
   height: 125px;
+  margin: 10px;
   border-radius: 10px;
   overflow: hidden;
   background-color: ghostwhite;
@@ -44,23 +46,17 @@ body {
 
 .character_element {
   position: absolute;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   left: 5px;
   top: 5px;
-  width: 20px;
-  height: 20px;
 }
 
-.character_element_shadow {
-  width: 15px;
-  height: 15px;
-}
-
-.character_element img {
+.character_element {
+  position: absolute;
   width: 20px;
   height: 20px;
+  filter: brightness(125%);
+  top: 5px;
+  left: 5px;
 }
 
 .character_image {
