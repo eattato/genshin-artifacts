@@ -24,6 +24,7 @@ $().ready(() => {
 
   // 카드 데이터 불러오기
   fetch(serverUrl + "data/card", {
+    method: "GET",
     headers: {
       "Content-Type": "application/json",
     },
@@ -32,14 +33,12 @@ $().ready(() => {
     .then((res) => {
       for (let ind in res) {
         let data = res[ind];
-        addCharacterCard(data.name, data.face, data.element, data.star);
+        addCharacterCard(
+          data.name,
+          "../resource/images/characters/" + data.face,
+          data.element,
+          data.star
+        );
       }
     });
-
-  addCharacterCard(
-    "닐?루",
-    "../resource/images/characters/nilou.webp",
-    "hydro",
-    5
-  );
 });

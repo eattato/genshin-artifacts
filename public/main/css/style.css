@@ -42,13 +42,11 @@ body {
   border-bottom: 1px solid white;
 }
 
-.characters_list {
+.character_list {
   display: flex;
   flex-wrap: wrap;
   width: 600px;
   height: auto;
-  padding-top: 100px;
-  margin-left: 50px;
 }
 
 /* ㄴcharacter card */

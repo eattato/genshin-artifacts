@@ -18,7 +18,7 @@
     "star": 5
   },
   "amber": {
-    "face": "amber.webp",
+    "face": "amber.png",
     "name": "엠버",
     "element": "pyro",
     "star": 4
@@ -192,7 +192,7 @@
     "star": 4
   },
   "lumine": {
-    "face": "lumine.png",
+    "face": "lumine.webp",
     "name": "루미네",
     "element": "",
     "star": 5
@@ -323,8 +323,8 @@
     "element": "anemo",
     "star": 5
   },
-  "xingqu": {
-    "face": "xingqu.png",
+  "xingqiu": {
+    "face": "xingqiu.png",
     "name": "행추",
     "element": "hydro",
     "star": 4
