@@ -11,12 +11,20 @@
   font-family: "nanum";
 }
 
+a {
+  display: block;
+  text-decoration: none;
+  width: 100%;
+  height: 100%;
+}
+
 body {
   display: flex;
   justify-content: space-between;
   background-image: url("../../resource/images/bg.webp");
 }
 
+/* characters */
 .characters {
   display: flex;
   flex-direction: column;
@@ -43,6 +51,7 @@ body {
   margin-left: 50px;
 }
 
+/* ㄴcharacter card */
 .character_frame {
   position: relative;
   display: flex;
@@ -96,4 +105,82 @@ body {
   line-height: 25px;
   border-top: 1px solid gray;
   background-color: white;
+}
+
+/* edit */
+.edit {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 400px;
+  height: 100%;
+  margin-right: 50px;
+}
+
+.edit_title {
+  font-size: 24px;
+  color: white;
+  text-align: right;
+  width: 400px;
+  margin-top: 100px;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid white;
+}
+.edit > .edit_title {
+  width: 150px;
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.edit_auto > .edit_title {
+  margin-top: 20px;
+}
+
+/* ㄴedit auto */
+.edit_auto {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.edit_input {
+  width: 380px;
+  height: 50px;
+  margin: 5px 0;
+  padding-left: 10px;
+  border-radius: 10px;
+  border: 1px solid lightgray;
+}
+
+.edit_submit {
+  width: 80px;
+  height: 45px;
+  margin-top: 15px;
+  margin-right: 10px;
+  text-align: center;
+  line-height: 45px;
+  border-radius: 10px;
+  border: 2px solid #9fffaf;
+  background-color: #09861e;
+}
+.edit_submit > a {
+  color: white;
+}
+
+/* ㄴedit semi */
+.edit_semi {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.edit_semi > div:nth-child(1n + 2) {
+  width: 380px;
+  height: 50px;
+  margin: 15px 0;
+  border-radius: 10px;
+  border: 2px solid gray;
+  background-color: lightgray;
+  text-align: center;
+  line-height: 50px;
 }
