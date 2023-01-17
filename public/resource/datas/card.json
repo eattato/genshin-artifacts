@@ -1,0 +1,250 @@
+{
+  "aether": {
+    "face": "aether.webp",
+    "name": "아이테르"
+  },
+  "albedo": {
+    "face": "albedo.webp",
+    "name": "알베도"
+  },
+  "aloy": {
+    "face": "aloy.webp",
+    "name": "에일로이"
+  },
+  "amber": {
+    "face": "amber.webp",
+    "name": "엠버"
+  },
+  "arataki_itto": {
+    "face": "arataki_itto.webp",
+    "name": "아라타키 이토"
+  },
+  "barbara": {
+    "face": "barbara.png",
+    "name": "바바라"
+  },
+  "beidou": {
+    "face": "beidou.png",
+    "name": "북두"
+  },
+  "bennett": {
+    "face": "bennett.png",
+    "name": "베넷"
+  },
+  "candace": {
+    "face": "candace.webp",
+    "name": "캔디스"
+  },
+  "chongyun": {
+    "face": "chongyun.webp",
+    "name": "중운"
+  },
+  "collei": {
+    "face": "collei.webp",
+    "name": "콜레이"
+  },
+  "cyno": {
+    "face": "cyno.webp",
+    "name": "사이노"
+  },
+  "diluc": {
+    "face": "diluc.png",
+    "name": "다이루크"
+  },
+  "diona": {
+    "face": "diona.webp",
+    "name": "디오나"
+  },
+  "dori": {
+    "face": "dori.webp",
+    "name": "도리"
+  },
+  "eula": {
+    "face": "eula.webp",
+    "name": "유라"
+  },
+  "faruzan": {
+    "face": "faruzan.png",
+    "name": "파루잔"
+  },
+  "fischl": {
+    "face": "fischl.png",
+    "name": "피슬"
+  },
+  "ganyu": {
+    "face": "ganyu.webp",
+    "name": "감우"
+  },
+  "gorou": {
+    "face": "gorou.webp",
+    "name": "고로"
+  },
+  "hu_tao": {
+    "face": "hu_tao.webp",
+    "name": "호두"
+  },
+  "jean": {
+    "face": "jean.webp",
+    "name": "진"
+  },
+  "kaedehara_kazuha": {
+    "face": "kaedehara_kazuha.webp",
+    "name": "카에데하라 카즈하"
+  },
+  "kaeya": {
+    "face": "kaeya.webp",
+    "name": "케이아"
+  },
+  "kamisato_ayaka": {
+    "face": "kamisato_ayaka.webp",
+    "name": "카미사토 아야카"
+  },
+  "kamisato_ayato": {
+    "face": "kamisato_ayato.webp",
+    "name": "카미사토 아야토"
+  },
+  "keqing": {
+    "face": "keqing.png",
+    "name": "각청"
+  },
+  "klee": {
+    "face": "klee.webp",
+    "name": "클레"
+  },
+  "kujou_sara": {
+    "face": "kujou_sara.webp",
+    "name": "쿠죠 사라"
+  },
+  "kuki_shinobu": {
+    "face": "kuki_shinobu.webp",
+    "name": "쿠키 시노부"
+  },
+  "layla": {
+    "face": "layla.webp",
+    "name": "레일라"
+  },
+  "lisa": {
+    "face": "lisa.png",
+    "name": "리사"
+  },
+  "lumine": {
+    "face": "lumine.png",
+    "name": "루미네"
+  },
+  "mona": {
+    "face": "mona.webp",
+    "name": "모나"
+  },
+  "nahida": {
+    "face": "nahida.webp",
+    "name": "나히다"
+  },
+  "nilou": {
+    "face": "nilou.webp",
+    "name": "닐루"
+  },
+  "ningguang": {
+    "face": "ningguang.webp",
+    "name": "응광"
+  },
+  "noelle": {
+    "face": "noelle.png",
+    "name": "노엘"
+  },
+  "qiqi": {
+    "face": "qiqi.webp",
+    "name": "치치"
+  },
+  "raiden_shogun": {
+    "face": "raiden_shogun.webp",
+    "name": "라이덴 쇼군"
+  },
+  "razor": {
+    "face": "razor.png",
+    "name": "레이저"
+  },
+  "rosaria": {
+    "face": "rosaria.webp",
+    "name": "로자리아"
+  },
+  "sangonomiya_kokomi": {
+    "face": "sangonomiya_kokomi.webp",
+    "name": "산고노미야 코코미"
+  },
+  "sayu": {
+    "face": "sayu.webp",
+    "name": "사유"
+  },
+  "shenhe": {
+    "face": "shenhe.webp",
+    "name": "신학"
+  },
+  "shikanoin_heizou": {
+    "face": "shikanoin_heizou.webp",
+    "name": "시카노인 헤이조"
+  },
+  "sucrose": {
+    "face": "sucrose.webp",
+    "name": "설탕"
+  },
+  "tartaglia": {
+    "face": "tartaglia.webp",
+    "name": "타르탈리아"
+  },
+  "thoma": {
+    "face": "thoma.webp",
+    "name": "토마"
+  },
+  "tighnari": {
+    "face": "tighnari.png",
+    "name": "타이나리"
+  },
+  "venti": {
+    "face": "venti.png",
+    "name": "벤티"
+  },
+  "wanderer": {
+    "face": "wanderer.png",
+    "name": "방랑자"
+  },
+  "xiangling": {
+    "face": "xiangling.webp",
+    "name": "응광"
+  },
+  "xiao": {
+    "face": "xiao.webp",
+    "name": "소"
+  },
+  "xingqu": {
+    "face": "xingqu.png",
+    "name": "행추"
+  },
+  "xinyan": {
+    "face": "xinyan.png",
+    "name": "신염"
+  },
+  "yae_miko": {
+    "face": "yae_miko.webp",
+    "name": "야에 미코"
+  },
+  "yanfei": {
+    "face": "yanfei.webp",
+    "name": "연비"
+  },
+  "yelan": {
+    "face": "yelan.webp",
+    "name": "야란"
+  },
+  "yoimiya": {
+    "face": "yoimiya.webp",
+    "name": "요이미야"
+  },
+  "yun_jin": {
+    "face": "yun_jin.webp",
+    "name": "운근"
+  },
+  "zhongli": {
+    "face": "zhongli.png",
+    "name": "종려"
+  }
+}
