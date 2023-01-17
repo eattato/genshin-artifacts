@@ -22,6 +22,7 @@ body {
   display: flex;
   justify-content: space-between;
   background-image: url("../../resource/images/bg.webp");
+  background-attachment: fixed;
 }
 
 /* characters */
