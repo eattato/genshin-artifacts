@@ -133,7 +133,7 @@
   },
   "kaedehara_kazuha": {
     "face": "kaedehara_kazuha.webp",
-    "name": "카에데하라 카즈하",
+    "name": "엄즈하",
     "element": "anemo",
     "star": 5
   },
@@ -144,14 +144,14 @@
     "star": 4
   },
   "kamisato_ayaka": {
-    "face": "kamisato_ayaka.webp",
-    "name": "카미사토 아야카",
+    "face": "kamisato_daepobokuh.png",
+    "name": "대포 복어",
     "element": "cryo",
     "star": 5
   },
   "kamisato_ayato": {
     "face": "kamisato_ayato.webp",
-    "name": "카미사토 아야토",
+    "name": "갈치",
     "element": "hydro",
     "star": 5
   },
