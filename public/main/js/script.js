@@ -45,32 +45,18 @@ $().ready(() => {
   // 자동 제출 기능
   let inSubmit = false;
   let autoSubmit = $(".edit_submit");
-
-  let serverSelect = $("#server");
   let uidInput = $("#uid");
-  let ltuidInput = $("#ltuid");
-  let ltokenInput = $("#ltoken");
 
   autoSubmit.click(() => {
     if (inSubmit == false) {
-      let server = serverSelect.val();
       let uid = uidInput.val();
-      let ltuid = ltuidInput.val();
-      let ltoken = ltokenInput.val();
-
-      if (server && uid && ltuid && ltoken) {
+      if (uid && Number(uid)) {
         inSubmit = true;
-        fetch(serverUrl + "auto", {
-          method: "POST",
+        fetch(serverUrl + "enka/" + uid, {
+          method: "GET",
           headers: {
             "Content-Type": "application/json",
           },
-          body: JSON.stringify({
-            server: server,
-            uid: uid,
-            ltuid: ltuid,
-            ltoken: ltoken,
-          }),
         })
           .then((res) => res.json())
           .then((res) => {

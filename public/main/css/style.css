@@ -84,12 +84,18 @@ body {
   border-radius: 10px;
   overflow: hidden;
   background-color: ghostwhite;
+  transition: 0.2s;
+  cursor: pointer;
 }
 .character_frame.five_star {
   background-color: #ffcc00;
 }
 .character_frame.four_star {
   background-color: #ab24ff;
+}
+
+.character_frame:hover {
+  transform: scale(1.15);
 }
 
 .character_element {
