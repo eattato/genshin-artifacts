@@ -192,6 +192,7 @@ body {
   border: 2px solid #9fffaf;
   background-color: #09861e;
   color: white;
+  cursor: pointer;
 }
 
 .edit_select {
@@ -201,6 +202,10 @@ body {
   padding-left: 10px;
   border-radius: 10px;
   border: 1px solid lightgray;
+}
+
+.edit_input.error {
+  border: 1px solid red;
 }
 
 /* ㄴedit semi */

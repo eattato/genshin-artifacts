@@ -69,9 +69,6 @@ app.post("/cards", (req, res) => {
 
   // ltuid, uid는 숫자여야하고 server는 os_asia, os_usa, os_euro, os_cht 중 하나여야 함
   if (!isNaN(ltuid) && ltoken && !isNaN(uid) && (server == "os_asia" || server == "os_usa" || server == "os_euro" || server == "os_cht")) {
-    let cookieData = {}
-    cookie.split("; ").forEach((c) => { c = c.split("="); if (c.length == 2) {cookieData[c[0]] = c[1];} })
-
     let ds = genDynamicSecret();
     let url = `https://bbs-api-os.hoyolab.com/game_record/genshin/api/index?server=${server}&role_id=${uid}`
     let headers = {

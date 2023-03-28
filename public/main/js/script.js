@@ -33,12 +33,12 @@ $().ready(() => {
     .then((res) => {
       for (let ind in res) {
         let data = res[ind];
-        addCharacterCard(
-          data.name,
-          "../resource/images/characters/" + data.face,
-          data.element,
-          data.star
-        );
+        // addCharacterCard(
+        //   data.name,
+        //   "../resource/images/characters/" + data.face,
+        //   data.element,
+        //   data.star
+        // );
       }
     });
 
@@ -52,14 +52,29 @@ $().ready(() => {
 
   autoSubmit.click(() => {
     if (inSubmit == false) {
-      let uid = uidInput.val();
-      if (uid && Number(uid)) {
+      if (isNaN(uidInput.val())) {
+        uidInput.addClass("error");
+      } else if (isNaN(ltuidInput.val())) {
+        ltuidInput.addClass("error");
+      } else if (ltokenInput.val().length == 0) {
+        ltokenInput.addClass("error");
+      } else {
+        uidInput.removeClass("error");
+        ltuidInput.removeClass("error");
+        ltokenInput.removeClass("error");
+
         inSubmit = true;
         fetch(serverUrl + "cards", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
+          body: JSON.stringify({
+            ltuid: ltuidInput.val(),
+            ltoken: ltokenInput.val(),
+            uid: uidInput.val(),
+            server: serverInput.val(),
+          })
         })
           .then((res) => res.json())
           .then((res) => {
