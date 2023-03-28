@@ -22,25 +22,20 @@ $().ready(() => {
     card.appendTo(characters);
   };
 
-  // 카드 데이터 불러오기
-  fetch(serverUrl + "data/card", {
-    method: "GET",
-    headers: {
-      "Content-Type": "application/json",
-    },
-  })
-    .then((res) => res.json())
-    .then((res) => {
-      for (let ind in res) {
-        let data = res[ind];
-        // addCharacterCard(
-        //   data.name,
-        //   "../resource/images/characters/" + data.face,
-        //   data.element,
-        //   data.star
-        // );
+  const loadCharacters = (characters) => {
+    if (characters) {
+      for (let ind in characters) {
+        let avatar = characters[ind];
+        addCharacterCard(avatar.name, avatar.image, avatar.element, avatar.rarity);
       }
-    });
+    }
+  }
+
+  // 카드 데이터 불러오기
+  let avatars = $.cookie("avatars");
+  if (avatars) {
+    loadCharacters(JSON.parse(avatars));
+  }
 
   // 자동 제출 기능
   let inSubmit = false;
@@ -78,7 +73,10 @@ $().ready(() => {
         })
           .then((res) => res.json())
           .then((res) => {
-            console.log(res);
+            if (res.result == true) {
+              $.cookie("avatars", JSON.stringify(res.avatars));
+              loadCharacters(res.avatars);
+            }
           })
           .finally(() => {
             inSubmit = false;
