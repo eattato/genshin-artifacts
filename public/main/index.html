@@ -22,11 +22,29 @@
         <div class="edit_title">입력하기</div>
         <div class="edit_auto">
           <div class="edit_title">자동 입력</div>
+          <select class="edit_select" id="server">
+            <option value="os_asia">아시아</option>
+            <option value="os_usa">미국</option>
+            <option value="os_euro">유럽</option>
+            <option value="os_cht">중국</option>
+          </select>
           <input
             class="edit_input"
             id="uid"
             type="text"
             placeholder="원신 UID"
+          />
+          <input
+            class="edit_input"
+            id="ltuid"
+            type="text"
+            placeholder="ltuid 값"
+          />
+          <input
+            class="edit_input"
+            id="ltoken"
+            type="text"
+            placeholder="ltoken 값"
           />
           <div class="edit_submit">제출</div>
         </div>

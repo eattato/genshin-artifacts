@@ -45,15 +45,18 @@ $().ready(() => {
   // 자동 제출 기능
   let inSubmit = false;
   let autoSubmit = $(".edit_submit");
+  let serverInput = $("#server");
   let uidInput = $("#uid");
+  let ltuidInput = $("#ltuid");
+  let ltokenInput = $("#ltoken");
 
   autoSubmit.click(() => {
     if (inSubmit == false) {
       let uid = uidInput.val();
       if (uid && Number(uid)) {
         inSubmit = true;
-        fetch(serverUrl + "enka/" + uid, {
-          method: "GET",
+        fetch(serverUrl + "cards", {
+          method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
