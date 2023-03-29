@@ -29,6 +29,8 @@ function eraseCookie(name) {
 
 $().ready(() => {
   let characters = $(".character_list");
+  let origin = window.location.href;
+  origin = origin.split("/").slice(0, -2).join("/");
 
   const addCharacterCard = (data) => {
     let card =
@@ -48,7 +50,7 @@ $().ready(() => {
     }
 
     card.click(() => {
-      window.location.href = data.id;
+      window.location.href = origin + "/card?id=" + data.id;
     });
     card.appendTo(characters);
   };
