@@ -1,5 +1,32 @@
 let serverUrl = "http://localhost:8888/";
 
+function setCookie(name, value, days) {
+  var expires = "";
+  if (!days) {
+    days = 1;
+  }
+
+  var date = new Date();
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+  expires = "; expires=" + date.toUTCString();
+  document.cookie =
+    name + "=" + (value || "") + "; expires=" + expires + "; path=/";
+  console.log(document.cookie);
+}
+function getCookie(name) {
+  var nameEQ = name + "=";
+  var ca = document.cookie.split(";");
+  for (var i = 0; i < ca.length; i++) {
+    var c = ca[i];
+    while (c.charAt(0) == " ") c = c.substring(1, c.length);
+    if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+  }
+  return null;
+}
+function eraseCookie(name) {
+  document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
+}
+
 $().ready(() => {
   let characters = $(".character_list");
 
@@ -26,13 +53,18 @@ $().ready(() => {
     if (characters) {
       for (let ind in characters) {
         let avatar = characters[ind];
-        addCharacterCard(avatar.name, avatar.image, avatar.element, avatar.rarity);
+        addCharacterCard(
+          avatar.name,
+          avatar.icon,
+          avatar.element,
+          avatar.rarity
+        );
       }
     }
-  }
+  };
 
   // 카드 데이터 불러오기
-  let avatars = $.cookie("avatars");
+  let avatars = getCookie("avatars");
   if (avatars) {
     loadCharacters(JSON.parse(avatars));
   }
@@ -69,12 +101,13 @@ $().ready(() => {
             ltoken: ltokenInput.val(),
             uid: uidInput.val(),
             server: serverInput.val(),
-          })
+          }),
         })
           .then((res) => res.json())
           .then((res) => {
             if (res.result == true) {
-              $.cookie("avatars", JSON.stringify(res.avatars));
+              setCookie("avatars", JSON.stringify(res.avatars), 100000);
+              console.log(document.cookie);
               loadCharacters(res.avatars);
             }
           })

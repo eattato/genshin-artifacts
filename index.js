@@ -32,24 +32,9 @@ const genDynamicSecret = (server) => {
   return `${current},${randomStr},${hash}`;
 };
 
-const requestMihoyo = (ltuid, ltoken, url) => {
-  let ltuid = req.body.ltuid;
-  let ltoken = req.body.ltoken;
-  let server = req.body.server;
-  let uid = req.body.uid;
-
+const requestMihoyo = (ltuid, ltoken, url, body) => {
   // ltuid, uid는 숫자여야하고 server는 os_asia, os_usa, os_euro, os_cht 중 하나여야 함
-  if (
-    !isNaN(ltuid) &&
-    ltoken &&
-    !isNaN(uid) &&
-    (server == "os_asia" ||
-      server == "os_usa" ||
-      server == "os_euro" ||
-      server == "os_cht")
-  ) {
-    let ds = genDynamicSecret();
-    let url = `https://bbs-api-os.hoyolab.com/game_record/genshin/api/index?server=${server}&role_id=${uid}`;
+  if (!isNaN(ltuid) && ltoken) {
     let headers = {
       Accept: "application/json, text/plain, */*",
       "Content-Type": "application/json",
@@ -65,7 +50,11 @@ const requestMihoyo = (ltuid, ltoken, url) => {
     };
 
     // 미호요에 request검
-    return axios.get(url, { headers });
+    if (body) {
+      return axios.post(url, body, { headers });
+    } else {
+      return axios.get(url, { headers });
+    }
   } else {
     return false;
   }
@@ -100,6 +89,65 @@ app.get("/enka/:uid", (req, res) => {
 });
 
 app.post("/cards", (req, res) => {
+  let ltuid = req.body.ltuid;
+  let ltoken = req.body.ltoken;
+  let server = req.body.server;
+  let uid = req.body.uid;
+
+  // ltuid, uid는 숫자여야하고 server는 os_asia, os_usa, os_euro, os_cht 중 하나여야 함
+  let availableServers = ["os_asia", "os_usa", "os_euro", "os_cht"];
+  if (!isNaN(uid) && availableServers.includes(server)) {
+    let reqMihoyo = requestMihoyo(
+      ltuid,
+      ltoken,
+      "https://bbs-api-os.hoyolab.com/game_record/genshin/api/character",
+      { role_id: uid, server: server }
+    );
+
+    // 미호요에 request검
+    if (reqMihoyo) {
+      reqMihoyo
+        .then((mihoyo) => {
+          mihoyo = mihoyo.data;
+          if (mihoyo.retcode == 0 && mihoyo.message == "OK") {
+            // 캐릭터 정보 수집 성공
+            let datas = {
+              avatars: mihoyo.data.avatars,
+              result: true,
+            };
+            res.json(datas);
+          } else {
+            // 미호요에서 요청 거절
+            res.json({
+              result: false,
+              desc: "welp, mihoyo api declined you",
+            });
+          }
+        })
+        .catch((e) => {
+          // 리퀘스트 에러
+          res.json({
+            result: false,
+            desc: `request failed - ${e}`,
+          });
+        });
+    } else {
+      // 미호요 요청 형식 맞지 않음
+      res.json({
+        result: false,
+        desc: "wrong parameters",
+      });
+    }
+  } else {
+    // server랑 uid 재확인
+    res.json({
+      result: false,
+      desc: "wrong parameters",
+    });
+  }
+});
+
+app.post("/cardsdetail", (req, res) => {
   // 원신 API 사용법은 https://arca.live/b/dev0/46827296?p=1 참고
   let ltuid = req.body.ltuid;
   let ltoken = req.body.ltoken;
@@ -107,33 +155,42 @@ app.post("/cards", (req, res) => {
   let uid = req.body.uid;
 
   // ltuid, uid는 숫자여야하고 server는 os_asia, os_usa, os_euro, os_cht 중 하나여야 함
-  let reqMihoyo = requestMihoyo(
-    ltuid,
-    ltoken,
-    `https://bbs-api-os.hoyolab.com/game_record/genshin/api/index?server=${server}&role_id=${uid}`
-  );
+  let availableServers = ["os_asia", "os_usa", "os_euro", "os_cht"];
+  if (!isNaN(uid) && availableServers.includes(server)) {
+    let reqMihoyo = requestMihoyo(
+      ltuid,
+      ltoken,
+      "https://bbs-api-os.hoyolab.com/game_record/genshin/api/character",
+      { role_id: uid, server: server }
+    );
 
-  // 미호요에 request검
-  if (reqMihoyo) {
-    reqMihoyo
-      .then((mihoyo) => {
-        mihoyo = mihoyo.data;
-        if (mihoyo.retcode == 0 && mihoyo.message == "OK") {
-          mihoyo.data["result"] = true;
-          res.json(mihoyo.data);
-        } else {
+    // 미호요에 request검
+    if (reqMihoyo) {
+      reqMihoyo
+        .then((mihoyo) => {
+          mihoyo = mihoyo.data;
+          if (mihoyo.retcode == 0 && mihoyo.message == "OK") {
+            mihoyo.data["result"] = true;
+            res.json(mihoyo.data);
+          } else {
+            res.json({
+              result: false,
+              desc: "welp, mihoyo api declined you",
+            });
+          }
+        })
+        .catch((e) => {
           res.json({
             result: false,
-            desc: "welp, mihoyo api declined you",
+            desc: `request failed - ${e}`,
           });
-        }
-      })
-      .catch((e) => {
-        res.json({
-          result: false,
-          desc: `request failed - ${e}`,
         });
+    } else {
+      res.json({
+        result: false,
+        desc: "wrong parameters",
       });
+    }
   } else {
     res.json({
       result: false,
