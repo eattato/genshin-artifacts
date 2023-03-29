@@ -1,5 +1,5 @@
 const express = require("express");
-const session = require("express-session")
+//const session = require("express-session")
 const bodyParser = require("body-parser");
 const axios = require("axios");
 const crypto = require("crypto");
@@ -8,7 +8,7 @@ const fs = require("fs");
 // App Config
 const app = express();
 app.use(bodyParser.json());
-app.use(session(JSON.parse(fs.readFileSync("config/session.json", "utf8"))));
+//app.use(session(JSON.parse(fs.readFileSync("config/session.json", "utf8"))));
 
 // Functions
 const getRandomStr = (length) => {
@@ -30,6 +30,45 @@ const genDynamicSecret = (server) => {
   let target = `salt=${dsSalt}&t=${current}&r=${randomStr}`;
   let hash = crypto.createHash("md5").update(target).digest("hex");
   return `${current},${randomStr},${hash}`;
+};
+
+const requestMihoyo = (ltuid, ltoken, url) => {
+  let ltuid = req.body.ltuid;
+  let ltoken = req.body.ltoken;
+  let server = req.body.server;
+  let uid = req.body.uid;
+
+  // ltuid, uid는 숫자여야하고 server는 os_asia, os_usa, os_euro, os_cht 중 하나여야 함
+  if (
+    !isNaN(ltuid) &&
+    ltoken &&
+    !isNaN(uid) &&
+    (server == "os_asia" ||
+      server == "os_usa" ||
+      server == "os_euro" ||
+      server == "os_cht")
+  ) {
+    let ds = genDynamicSecret();
+    let url = `https://bbs-api-os.hoyolab.com/game_record/genshin/api/index?server=${server}&role_id=${uid}`;
+    let headers = {
+      Accept: "application/json, text/plain, */*",
+      "Content-Type": "application/json",
+      "Accept-Encoding": "gzip, deflate, br",
+      "Accept-Language": "ko-kr",
+      "user-agent":
+        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
+      "x-rpc-app_version": "1.5.0", // 필수 데이터
+      "x-rpc-client_type": "4", // 필수 데이터, 이거 5로 해서 안되는 거였음 엌ㅋㅋ
+      "x-rpc-language": "ko-kr", // 한국어로 데이터 가져올거임
+      ds: genDynamicSecret(), // 필수 데이터
+      cookie: `ltoken=${ltoken}; ltuid=${ltuid}`, // 필수 데이터, 쿠키를 등록
+    };
+
+    // 미호요에 request검
+    return axios.get(url, { headers });
+  } else {
+    return false;
+  }
 };
 
 // Requests
@@ -68,46 +107,53 @@ app.post("/cards", (req, res) => {
   let uid = req.body.uid;
 
   // ltuid, uid는 숫자여야하고 server는 os_asia, os_usa, os_euro, os_cht 중 하나여야 함
-  if (!isNaN(ltuid) && ltoken && !isNaN(uid) && (server == "os_asia" || server == "os_usa" || server == "os_euro" || server == "os_cht")) {
-    let ds = genDynamicSecret();
-    let url = `https://bbs-api-os.hoyolab.com/game_record/genshin/api/index?server=${server}&role_id=${uid}`
-    let headers = {
-      Accept: "application/json, text/plain, */*",
-      "Content-Type": "application/json",
-      "Accept-Encoding": "gzip, deflate, br",
-      "Accept-Language": "ko-kr",
-      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/111.0.0.0 Safari/537.36",
-      "x-rpc-app_version": "1.5.0", // 필수 데이터
-      "x-rpc-client_type": "4", // 필수 데이터, 이거 5로 해서 안되는 거였음 엌ㅋㅋ
-      "x-rpc-language": "ko-kr", // 한국어로 데이터 가져올거임
-      ds: genDynamicSecret(), // 필수 데이터
-      cookie: `ltoken=${ltoken}; ltuid=${ltuid}`, // 필수 데이터, 쿠키를 등록
-    };
+  let reqMihoyo = requestMihoyo(
+    ltuid,
+    ltoken,
+    `https://bbs-api-os.hoyolab.com/game_record/genshin/api/index?server=${server}&role_id=${uid}`
+  );
 
-    // 미호요에 request검
-    axios.get(url, {headers})
-    .then((mihoyo) => {
-      mihoyo = mihoyo.data;
-      if (mihoyo.retcode == 0 && mihoyo.message == "OK") {
-        mihoyo.data["result"] = true;
-        res.json(mihoyo.data);
-      } else {
+  // 미호요에 request검
+  if (reqMihoyo) {
+    reqMihoyo
+      .then((mihoyo) => {
+        mihoyo = mihoyo.data;
+        if (mihoyo.retcode == 0 && mihoyo.message == "OK") {
+          mihoyo.data["result"] = true;
+          res.json(mihoyo.data);
+        } else {
+          res.json({
+            result: false,
+            desc: "welp, mihoyo api declined you",
+          });
+        }
+      })
+      .catch((e) => {
         res.json({
-          "result": false,
-          "desc": "welp, mihoyo api declined you"
+          result: false,
+          desc: `request failed - ${e}`,
         });
-      }
-    })
-    .catch((e) => {
-      res.json({
-        "result": false,
-        "desc": `request failed - ${e}`
       });
-    });
   } else {
     res.json({
-      "result": false,
-      "desc": "wrong parameters"
+      result: false,
+      desc: "wrong parameters",
+    });
+  }
+});
+
+app.post("/artifacts", (req, res) => {
+  let ltuid = req.body.ltuid;
+  let ltoken = req.body.ltoken;
+
+  let reqMihoyo = requestMihoyo(ltuid, ltoken, ``);
+
+  if (reqMihoyo) {
+    reqMihoyo.then((mihoyo) => {});
+  } else {
+    res.json({
+      result: false,
+      desc: "wrong parameters",
     });
   }
 });
