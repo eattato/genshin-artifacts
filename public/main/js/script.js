@@ -75,6 +75,16 @@ $().ready(() => {
     artifacts = [];
   }
 
+  const getArtifactById = (id) => {
+    for (let i in artifacts) {
+      let artifact = artifacts[i];
+      if (artifact.id == id) {
+        return artifact;
+      }
+    }
+    return null;
+  }
+
   // 자동 제출 기능
   let inSubmit = false;
   let autoSubmit = $(".edit_submit");
@@ -112,20 +122,25 @@ $().ready(() => {
           .then((res) => res.json())
           .then((res) => {
             if (res.result == true) {
-              setCookie("avatars", JSON.stringify(res.avatars), 100000);
-              console.log(document.cookie);
-              loadCharacters(res.avatars);
-
               for (let i in res.avatars) {
                 let avatar = res.avatars[i];
 
                 // 캐릭터가 낀 성유물 가져옴
+                let reliquaries = [];
                 for (let r in res.reliquaries) {
                   // 같은 종류 성유물도 ID는 다 다름, 고유함
                   let artifact = res.reliquaries[r];
-                  artifacts.push(artifact);
+                  reliquaries.push(artifact.id);
+                  if (!getArtifactById(artifact.id)) { // 같은 ID의 성유물이 없어야함
+                    artifacts.push(artifact);
+                  }
                 }
+                avatar.reliquaries = reliquaries;
               }
+
+              setCookie("avatars", JSON.stringify(res.avatars), 100000);
+              console.log(document.cookie);
+              loadCharacters(res.avatars);
             }
           })
           .finally(() => {
