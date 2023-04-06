@@ -66,8 +66,13 @@ $().ready(() => {
 
   // 카드 데이터 불러오기
   let avatars = getCookie("avatars");
+  let artifacts = getCookie("artifacts");
   if (avatars) {
     loadCharacters(JSON.parse(avatars));
+  }
+
+  if (artifacts == null) {
+    artifacts = [];
   }
 
   // 자동 제출 기능
@@ -110,6 +115,17 @@ $().ready(() => {
               setCookie("avatars", JSON.stringify(res.avatars), 100000);
               console.log(document.cookie);
               loadCharacters(res.avatars);
+
+              for (let i in res.avatars) {
+                let avatar = res.avatars[i];
+
+                // 캐릭터가 낀 성유물 가져옴
+                for (let r in res.reliquaries) {
+                  // 같은 종류 성유물도 ID는 다 다름, 고유함
+                  let artifact = res.reliquaries[r];
+                  artifacts.push(artifact);
+                }
+              }
             }
           })
           .finally(() => {
