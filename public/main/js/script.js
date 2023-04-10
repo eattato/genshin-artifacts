@@ -27,6 +27,38 @@ function eraseCookie(name) {
   document.cookie = name + "=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;";
 }
 
+const getData = (key) => {
+  let data = localStorage.getItem(key);
+  if (data) {
+    data = JSON.parse(data);
+  }
+  return data;
+}
+
+const getElementById = (list, id) => {
+  let result = null;
+  for (let i in list) {
+    let element = list[i];
+    if (element.id == id) {
+      result = element;
+      break;
+    }
+  }
+  return result;
+}
+
+const getDistinct = (origin, targets) => {
+  let result = [];
+  for (let i in targets) {
+    let target = targets[i];
+    if (!getElementById(origin, target.id)) {
+      result.push(target);
+    }
+  }
+  return result;
+}
+
+// 메인
 $().ready(() => {
   let characters = $(".character_list");
   let origin = window.location.href;
@@ -65,24 +97,39 @@ $().ready(() => {
   };
 
   // 카드 데이터 불러오기
-  let avatars = getCookie("avatars");
-  let artifacts = getCookie("artifacts");
+  let avatars = getData("avatars");
+  let artifacts = getData("artifacts");
   if (avatars) {
-    loadCharacters(JSON.parse(avatars));
+    loadCharacters(avatars);
   }
 
-  if (artifacts == null) {
-    artifacts = [];
-  }
-
-  const getArtifactById = (id) => {
-    for (let i in artifacts) {
-      let artifact = artifacts[i];
-      if (artifact.id == id) {
-        return artifact;
+  const getArtifacts = (avatars) => {
+    let result = []
+    for (let i in avatars) {
+      let avatar = avatars[i];
+      let reliquaries = avatar.reliquaries;
+      for (let i in reliquaries) {
+        let artifact = reliquaries[i];
+        if (!getElementById(artifacts, artifact.id)) {
+          result.push(artifact);
+        }
       }
     }
-    return null;
+    return result;
+  }
+  
+  const replaceReliquariesToId = (avatars) => {
+    for (let i in avatars) {
+      let avatar = avatars[i];
+      let reliquaries = avatar.reliquaries;
+      let ids = [];
+      for (let i in reliquaries) {
+        let artifact = reliquaries[i];
+        ids.push(artifact.id);
+      }
+      avatar.reliquaries = ids;
+    }
+    return avatars;
   }
 
   // 자동 제출 기능
@@ -122,24 +169,17 @@ $().ready(() => {
           .then((res) => res.json())
           .then((res) => {
             if (res.result == true) {
-              for (let i in res.avatars) {
-                let avatar = res.avatars[i];
+              let addedArtifacts = getArtifacts(res.avatars);
+              let addedAvatars = replaceReliquariesToId(res.avatars);
 
-                // 캐릭터가 낀 성유물 가져옴
-                let reliquaries = [];
-                for (let r in res.reliquaries) {
-                  // 같은 종류 성유물도 ID는 다 다름, 고유함
-                  let artifact = res.reliquaries[r];
-                  reliquaries.push(artifact.id);
-                  if (!getArtifactById(artifact.id)) { // 같은 ID의 성유물이 없어야함
-                    artifacts.push(artifact);
-                  }
-                }
-                avatar.reliquaries = reliquaries;
-              }
+              console.log(addedArtifacts);
+              console.log(getDistinct(artifacts, addedArtifacts));
 
-              setCookie("avatars", JSON.stringify(res.avatars), 100000);
-              console.log(document.cookie);
+              avatars = avatars.concat(getDistinct(avatars, addedAvatars));
+              artifacts = artifacts.concat(getDistinct(artifacts, addedArtifacts));
+              localStorage.setItem("avatars", JSON.stringify(avatars));
+              localStorage.setItem("artifacts", JSON.stringify(artifacts));
+              // setCookie("avatars", JSON.stringify(res.avatars), 100000);
               loadCharacters(res.avatars);
             }
           })
