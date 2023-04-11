@@ -1,36 +1,52 @@
 <!DOCTYPE html>
 <html lang="ko">
-  <head>
-    <meta charset="UTF-8" />
-    <title>원신 성유물 계산기</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <script src="../fragments/js/jquery.js"></script>
-    <script src="js/script.js"></script>
-  </head>
-  <body>
-    <div class="header">
-      <div class="logo">
-        <img src="../resource/images/logo.png" alt="" />
-      </div>
+
+<head>
+  <meta charset="UTF-8" />
+  <title>원신 성유물 계산기</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <script src="../fragments/js/jquery.js"></script>
+  <script src="js/script.js"></script>
+</head>
+
+<body>
+  <div class="header">
+    <div class="logo">
+      <img src="../resource/images/logo.png" alt="" />
     </div>
-    <div class="main">
-      <div class="character_left">
-        <div class="character_info">
+  </div>
+  <div class="main">
+    <div class="character_left">
+      <div class="character_info">
+        <div class="character_info_top">
+          <img class="character_element" src="" alt="">
           <div class="character_title">캐릭터 이름</div>
-          <div class="character_desc">캐릭터 설명</div>
         </div>
-        <div class="character_img">
-          <img src="" alt="">
-        </div>
+        <div class="character_desc"></div>
       </div>
-
-      <div class="grids">
-        <div class="grid_title">무기 선택</div>
-        <div class="grid_list"></div>
-
-        <div class="grid_title">성유물 선택</div>
-        <div class="grid_list"></div>
+      <div class="character_img">
+        <img src="" alt="">
+      </div>
+      <div class="character_equipments">
+        <div class="character_artifacts">
+          <div class="character_equipment"><img src="" alt=""></div>
+          <div class="character_equipment"><img src="" alt=""></div>
+          <div class="character_equipment"><img src="" alt=""></div>
+          <div class="character_equipment"><img src="" alt=""></div>
+          <div class="character_equipment"><img src="" alt=""></div>
+        </div>
+        <div class="character_equipment" id="weapon"><img src="" alt=""></div>
       </div>
     </div>
-  </body>
+
+    <div class="grids">
+      <div class="grid_title">무기 선택</div>
+      <div class="grid_list"></div>
+
+      <div class="grid_title">성유물 선택</div>
+      <div class="grid_list" id="artifact_frame"></div>
+    </div>
+  </div>
+</body>
+
 </html>

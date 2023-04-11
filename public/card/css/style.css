@@ -56,9 +56,10 @@ form {
 
 /* main */
 .character_left {
+  position: relative;
   display: flex;
   flex-direction: column;
-  width: 300px;
+  width: 600px;
   margin-left: 20px;
 }
 
@@ -68,14 +69,33 @@ form {
   width: 300px;
 }
 
-.character_info > div {
+.character_info div {
   color: white;
 }
 
+.character_info_top {
+  display: flex;
+  align-items: center;
+}
+
+.character_desc {
+  font-size: 24px;
+  height: 30px;
+  line-height: 30px;
+  margin-left: 55px;
+}
+
 .character_title {
-  font-size: 30px;
-  height: 35px;
-  line-height: 35px;
+  font-size: 34px;
+  height: 40px;
+  line-height: 40px;
+}
+
+.character_element {
+  width: 38px;
+  height: 38px;
+  margin-right: 6px;
+  margin-left: 10px;
 }
 
 .character_desc {
@@ -88,6 +108,37 @@ form {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.character_equipments {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  width: 300px;
+  right: 0;
+  margin-top: 70px;
+}
+
+.character_equipment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 40px;
+  height: 40px;
+  margin: 2px 2px;
+  border-radius: 5px;
+  border: 3px solid #d2b78c;
+  background-color: beige;
+}
+
+.character_equipment img {
+  width: 40px;
+}
+
+.character_artifacts {
+  display: flex;
 }
 
 /* grid */
@@ -129,9 +180,11 @@ form {
   transition: 0.2s;
   cursor: pointer;
 }
+
 .grid_frame.five_star {
   background-color: #ffcc00;
 }
+
 .grid_frame.four_star {
   background-color: #ab24ff;
 }
@@ -141,18 +194,48 @@ form {
 }
 
 .grid_element {
+  display: none;
   position: absolute;
-  left: 5px;
-  top: 5px;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
-.grid_element {
-  position: absolute;
-  width: 20px;
+#weapon {
+  width: 75px;
+  height: 75px;
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+#weapon img {
+  width: 75px;
+}
+
+.grid_frame:hover>.grid_element {
+  display: flex;
+}
+
+.grid_element_row {
+  display: flex;
+  align-items: center;
+  width: 90px;
   height: 20px;
-  filter: brightness(125%);
-  top: 5px;
-  left: 5px;
+  margin-left: 10px;
+}
+
+.grid_element_icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 5px;
+}
+
+.grid_element_data {
+  font-size: 16px;
+  line-height: 20px;
+  height: 20px;
+  color: white;
 }
 
 .grid_image {
