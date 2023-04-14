@@ -31,6 +31,27 @@ const getDistinct = (origin, targets) => {
   return result;
 }
 
+const isNameFirst = (a, b) => {
+  let test = [a, b];
+  test.sort();
+  if (test[0] == a) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+const swap = (arr, a, b) => {
+  let temp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = temp;
+}
+
+function sleep(ms) {
+  const wakeUpTime = Date.now() + ms;
+  while (Date.now() < wakeUpTime) { }
+}
+
 // 메인
 $().ready(() => {
   let characters = $(".character_list");
@@ -60,8 +81,40 @@ $().ready(() => {
     card.appendTo(characters);
   };
 
+  const sortCharacters = (characters) => {
+    let sortCount = characters.length - 1;
+
+    // 등급 정렬
+    for (let i = 0; i < sortCount; i++) {
+      for (let c = 0; c < sortCount; c++) {
+        let c1 = characters[c];
+        let c2 = characters[c + 1];
+        if (c2.rarity > c1.rarity) {
+          swap(characters, c, c + 1);
+        }
+      }
+    }
+
+    // 이름 정렬
+    for (let i = 0; i < sortCount; i++) {
+      // console.log(`-----------${i + 1}번째 루프---------`)
+      for (let c = 0; c < sortCount - i; c++) {
+        let c1 = characters[c];
+        let c2 = characters[c + 1];
+        if (c1.rarity == c2.rarity && isNameFirst(c2.name, c1.name)) {
+          // console.log(`${c1.name}(${c})와 ${c2.name}(${c + 1})를 스왑`);
+          swap(characters, c, c + 1);
+        } else if (c1.rarity == c2.rarity) {
+          // console.log(c1.name + "랑 " + c2.name + " 그대로,");
+        }
+      }
+    }
+  }
+
   const loadCharacters = (characters) => {
     if (characters) {
+      // 정렬
+      sortCharacters(characters)
       for (let ind in characters) {
         let avatar = characters[ind];
         addCharacterCard(avatar);

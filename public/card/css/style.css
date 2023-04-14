@@ -200,6 +200,7 @@ form {
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.6);
+  padding-top: 5px;
 }
 
 #weapon {
@@ -222,7 +223,7 @@ form {
   align-items: center;
   width: 90px;
   height: 20px;
-  margin-left: 10px;
+  margin-left: 5px;
 }
 
 .grid_element_icon {
@@ -235,6 +236,11 @@ form {
   font-size: 16px;
   line-height: 20px;
   height: 20px;
+  color: white;
+}
+
+.grid_element_title {
+  font-size: 14px;
   color: white;
 }
 

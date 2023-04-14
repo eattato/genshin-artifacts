@@ -23,6 +23,7 @@ const addElementRow = (card, data) => {
   let element = '<div class="grid_element_row"><img class="grid_element_icon" src="" /><div class="grid_element_title"></div></div>'
   element = $($.parseHTML(element));
   element.find(".grid_element_title").text(data.text);
+  element.find(".grid_element_icon").attr("src", "../resource/images/icon/" + data.icon);
   element.appendTo(parent);
 }
 
@@ -62,7 +63,8 @@ $().ready(() => {
     let artifact = artifacts[i];
     let card = addItemCard(artifact);
     card.appendTo(artifactFrame);
-    addElementRow(card, { icon: "", text: "치확 %" });
+    addElementRow(card, { icon: "crit_per.png", text: "치확 %" });
+    addElementRow(card, { icon: "crit_dmg.png", text: "치피 %" });
 
     // 착용 중인 성유물이면 보더 라인
     if (viewingAvatar) {
